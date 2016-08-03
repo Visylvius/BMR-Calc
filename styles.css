@@ -1,0 +1,40 @@
+body {
+  padding: 0 20%;
+  font-family: sans-serif;
+  text-align: center;
+}
+.form-group {
+  display: block;
+}
+.form-control {
+  display: block;
+}
+.male-body-fat {
+  display: block;
+}
+h1 {
+  text-align: center;
+  font-size: 64px;
+}
+
+.category {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 26px;
+}
+
+.category p {
+  margin: 0 0 20px;
+}
+
+.txt-field {
+  font-size: 28px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+.radio-btn {
+  display: inline-block;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+}

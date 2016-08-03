@@ -1,0 +1,22 @@
+{
+  "name": "mvp",
+  "homepage": "https://github.com/visylvius/MKS-SF-mvp",
+  "authors": [
+    "Loren Barrick <lorenbarrick@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3",
+    "underscore": "^1.8.3",
+    "bootstrap": "^3.3.6"
+  }
+}
