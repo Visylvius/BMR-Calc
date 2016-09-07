@@ -17,8 +17,9 @@ app.controller('mainCtrl', function($scope) {
     $scope.user.activityLevel = '';
     $scope.user.bodyFat = '';
     $scope.totalCalories = 0;
-
-
+    $scope.number = '';
+    $scope.numbertwo = '';
+    $scope.numberthree = '';
 
     $scope.bmrActivityCalc = {
       lazy: 1.30,
@@ -39,6 +40,28 @@ app.controller('mainCtrl', function($scope) {
       '28.38': 0.90,
       '38.48': 0.85
     };
+
+    console.log($scope.number);
+    // var movingSpan = angular.element(document.querySelector('.number-input'));
+    // var input = angular.element(document.querySelector('.input__field'));
+    // console.log(input);
+    // var numberInputChildren = angular.element(document.querySelector('.number-input-wrapper'));
+    // console.log(numberInputChildren);
+    // // console.log(allTheInputs.children());
+    // console.log(numberInputChildren.children());
+    $scope.numberFieldChange = function() {
+      console.log('im changing!', $scope.number);
+
+    };
+      // if (input.hasClass('ng-not-empty')) {
+      //   console.log('yo');
+      //   movingSpan.addClass('input--filled');
+      // }
+
+    // if ($scope.number.field) {
+    //
+    // }
+
 
     //user basic info required for calculations
     $scope.update = function(user) {
@@ -147,11 +170,3 @@ app.controller('mainCtrl', function($scope) {
       }
     };
   });
-
-
-
-//TODO before 5:30
-
-//Have functioning meal log in its own object
-//have a functioning what do you want to do form? Lose weight/gain muscle
-//have some sort of algorithim to calculate caloric deficit, or caloric excess depending on sex of user
