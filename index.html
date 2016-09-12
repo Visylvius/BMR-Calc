@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js'></script>
     <script src="main.js"></script>
+    <script src='node_modules/ng-numbers-only/dist/ng-numbers-only.js'></script>
+    <script src='ng-numbers-only.js'></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   </head>
 <body>
@@ -93,7 +95,7 @@
 
     <div class="number-input-wrapper">
       <span class="number-input" ng-class='{"input--filled": number}'>
-				<input class="input__field input__field" ng-model='number' ng-change='numberFieldChange()' type="text" id="input-22" />
+				<input class="input__field input__field" type="number" id="input-22" ng-model='number' ng-change='numberFieldChange()' numbers-only precision="2" step="1" min="0"/>
 				<label class="input__label input__label" for="input-22">
 					<span class="input__label-content input__label-content">First Name</span>
 				</label>

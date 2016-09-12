@@ -10,15 +10,31 @@ body {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
 }
+
+input[type='number'] {
+   -moz-appearance:textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   margin: 0;
+}
+
 .form-group {
   display: block;
 }
+
 .form-control {
   display: block;
 }
+
 .male-body-fat {
   display: block;
 }
+
 h1 {
   text-align: center;
   font-size: 64px;
@@ -56,10 +72,12 @@ label {
   }
 }
 
-
-
 .radio-btn-wrapper:nth-last-of-type(1) {
   padding-right: 0;
+}
+
+.radio-btn-wrapper label {
+  cursor: pointer;
 }
 
 .submit-btn {
@@ -75,9 +93,9 @@ label {
   position: relative;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
-  transition: all 0.3s;
-  background: #fff;
-  color: #0e83cd;
+  transition: all 0.2s;
+  background: #d4ecfb;
+  color: #0E83CD;
   border: 3px solid #0e83cd;
 }
 

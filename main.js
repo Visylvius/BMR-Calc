@@ -1,4 +1,5 @@
-var app = angular.module('macro-log', []);
+
+var app = angular.module('macro-log', ['keepr.ngNumbersOnly']);
 
 //TODO Add Droid Sans Font Family
 app.controller('mainCtrl', function($scope) {
@@ -41,26 +42,16 @@ app.controller('mainCtrl', function($scope) {
       '38.48': 0.85
     };
 
-    console.log($scope.number);
-    // var movingSpan = angular.element(document.querySelector('.number-input'));
-    // var input = angular.element(document.querySelector('.input__field'));
-    // console.log(input);
-    // var numberInputChildren = angular.element(document.querySelector('.number-input-wrapper'));
-    // console.log(numberInputChildren);
-    // // console.log(allTheInputs.children());
-    // console.log(numberInputChildren.children());
     $scope.numberFieldChange = function() {
-      console.log('im changing!', $scope.number);
-
-    };
-      // if (input.hasClass('ng-not-empty')) {
-      //   console.log('yo');
-      //   movingSpan.addClass('input--filled');
+      console.log(angular.isNumber($scope.number));
+      // if (typeof $scope.number === 'number') {
+      //   console.log('i am a number');
+      // } else {
+      //   console.log('this is not a number');
       // }
 
-    // if ($scope.number.field) {
-    //
-    // }
+    };
+
 
 
     //user basic info required for calculations
