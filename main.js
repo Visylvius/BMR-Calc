@@ -2,6 +2,29 @@
 var app = angular.module('macro-log', ['keepr.ngNumbersOnly']);
 
 //TODO Add Droid Sans Font Family
+
+app.directive('input', [function() {
+    return {
+        restrict: 'E',
+        require: '?ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            if (
+                   'undefined' !== typeof attrs.type
+                && 'number' === attrs.type
+                && ngModel
+            ) {
+                ngModel.$formatters.push(function(modelValue) {
+                    return Number(modelValue);
+                });
+
+                ngModel.$parsers.push(function(viewValue) {
+                    return Number(viewValue);
+                });
+            }
+        }
+    };
+}]);
+
 app.controller('mainCtrl', function($scope) {
     $scope.user = {};
     $scope.meal = {};
@@ -30,27 +53,27 @@ app.controller('mainCtrl', function($scope) {
       hard: 2.0
     };
     $scope.maleBodyFat = {
-      '10.14': 1.0,
-      '14.20': 0.95,
-      '20.28': 0.90,
+      '10.13': 1.0,
+      '14.19': 0.95,
+      '20.27': 0.90,
       '28.30': 0.85
     };
     $scope.femaleBodyFat = {
-      '14.18': 1.0,
-      '18.28': 0.95,
-      '28.38': 0.90,
+      '14.17': 1.0,
+      '18.27': 0.95,
+      '28.37': 0.90,
       '38.48': 0.85
     };
 
-    $scope.numberFieldChange = function() {
-      console.log(angular.isNumber($scope.number));
+    // $scope.numberFieldChange = function() {
+    //   console.log(angular.isNumber($scope.number));
       // if (typeof $scope.number === 'number') {
       //   console.log('i am a number');
       // } else {
       //   console.log('this is not a number');
       // }
-
-    };
+    //
+    // };
 
 
 
@@ -61,6 +84,7 @@ app.controller('mainCtrl', function($scope) {
     };
     $scope.addFood = function(food) {
       $scope.meal = angular.copy(food);
+      console.log($scope.meal);
       $scope.show_meals = false;
       if ($scope.user.gender === 'male') {
         $scope.show_activity_male = true;
