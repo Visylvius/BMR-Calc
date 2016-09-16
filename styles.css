@@ -5,11 +5,42 @@ html {
   box-sizing: inherit;
 }
 
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+
 body {
-  padding: 0 20%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
   text-align: center;
 }
+
+.wrapper {
+  padding: 0 20%;
+}
+
+header {
+  background-color: #F0F0F0;
+  width: 100%;
+  padding: 25px;
+  margin-bottom: 40px;
+}
+
+.horizontal {
+  display: inline-block;
+  margin-left: 28px;
+}
+
+.horizontal:nth-child(even) {
+  margin-left: 0;
+}
+
+.percent-sign {
+  font-family: 'PT Sans', sans-serif;
+}
+
+/*Input css*/
 
 input[type='number'] {
    -moz-appearance:textfield;
@@ -63,7 +94,7 @@ label {
 .radio-btn-wrapper {
   display: inline-block;
   padding-right: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 26px;
 }
 
 @media only screen and (min-width: 897px) {
@@ -95,14 +126,14 @@ label {
   -moz-transition: all 0.3s;
   transition: all 0.2s;
   background: #d4ecfb;
-  color: #0E83CD;
+  color: #000;
   border: 3px solid #0e83cd;
 }
 
 
 .submit-btn:hover,
 .submit-btn:active {
-  color: #fff;
+  color: #000;
   background: #0e83cd;
 }
 
@@ -132,37 +163,63 @@ label {
   background-color: red;
 }
 
-
-
-
 input[type=radio] {
   visibility: hidden;
   height: 0;
   width: 0;
 }
 
-.one input[type="radio"]:checked + label {
-  background: pink;
+
+.one input[type="radio"] + label {
+  border-bottom: 8px solid #ff8fda;
 }
 
-.two input[type="radio"]:checked + label {
-  background: #0E83CD;
-  color: #fff;
+.two input[type="radio"] + label {
+  border-bottom: 8px solid #6ac3fb;
+}
+
+.three input[type="radio"] + label {
+  border-bottom: 8px solid #fde984;
+}
+
+.four input[type="radio"] + label {
+  border-bottom: 8px solid #93f8cd
+}
+
+.five input[type="radio"] + label {
+  border-bottom: 8px solid #c3a6fd;
 }
 
 
-.three input[type="radio"]:checked + label {
+.one input[type="radio"]:checked + label,
+.one input[type="radio"] + label:hover {
+  background: #ff8fda;
+  border-bottom: transparent;
+}
+
+.two input[type="radio"]:checked + label,
+.two input[type="radio"] + label:hover {
+  background: #6ac3fb;
+  border-bottom: transparent;
+}
+
+.three input[type="radio"]:checked + label,
+.three input[type="radio"] + label:hover {
   background: #fde984;
+  border-bottom: transparent;
 }
 
-.four input[type="radio"]:checked + label {
+.four input[type="radio"]:checked + label,
+.four input[type="radio"] + label:hover {
   background: #93f8cd;
+  border-bottom: transparent;
 }
 
-.five input[type="radio"]:checked + label {
+.five input[type="radio"]:checked + label,
+.five input[type="radio"] + label:hover {
   background: #c3a6fd;
+  border-bottom: transparent;
 }
-
 
 /* Akira */
 
@@ -175,7 +232,6 @@ input[type=radio] {
   min-width: 300px;
 	width: calc(100% - 2em);
 	vertical-align: top;
-	margin-top: 2em;
 }
 
 .number-input-wrapper {

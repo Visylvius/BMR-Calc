@@ -9,230 +9,236 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js'></script>
     <script src="main.js"></script>
     <script src='node_modules/ng-numbers-only/dist/ng-numbers-only.js'></script>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:700" rel="stylesheet">
   </head>
 <body>
-  <h1>BMR Calculator</h1>
-    <div class="form-group user-info" ng-if=noUser>
-     <form name="userForm" class="form-horizontal">
-       <div class="category">
-        <p>
-          Weight
-        </p>
-        <div class="number-input-wrapper">
-          <span class="number-input" ng-class='{"input--filled": user.weight}'>
-    				<input class="input__field input__field" type="number" id="input-22" required ng-model='user.weight' numbers-only precision="2" step="1" min="0"/>
-    				<label class="input__label input__label" for="input-22">
-    					<span class="input__label-content input__label-content">Enter your weight here</span>
-    				</label>
-      	  </span>
+    <header>
+      <h1>BMR Calculator</h1>
+    </header>
+    <div class='wrapper'>
+        <div class="form-group user-info" ng-if=noUser>
+         <form name="userForm" class="form-horizontal">
+           <div class="category">
+            <p>
+              Weight
+            </p>
+            <div class="number-input-wrapper">
+              <span class="number-input" ng-class='{"input--filled": user.weight}'>
+        				<input class="input__field input__field" type="number" id="input-22" required ng-model='user.weight' numbers-only precision="2" step="1" min="0"/>
+        				<label class="input__label input__label" for="input-22">
+        					<span class="input__label-content input__label-content">Enter your weight here</span>
+        				</label>
+          	  </span>
+            </div>
+           </div>
+           <div class="category">
+             <p>
+              Gender
+             </p>
+             <div class='one horizontal'>
+              <input type="radio" class='radio-btn' ng-required='!user.gender' ng-model='user.gender' value='female' id='female' />
+              <label for='female'>Female</label>
+             </div>
+             <div class='two horizontal'>
+              <input type='radio' class='radio-btn' id='male' ng-required='!user.gender' ng-model='user.gender' value='male' />
+              <label for='male'>Male</label>
+             </div>
+           </div>
+           <input type='submit' class='submit-btn' ng-click='findGender()' ng-disabled='!user.weight || !user.gender' value='save' />
+         </form>
         </div>
-       </div>
-       <div class="category">
-         <p>
-          Gender
-         </p>
-         <div class='one'>
-          <input type="radio" class='radio-btn' ng-required='!user.gender' ng-model='user.gender' value='female' id='female' />
-          <label for='female'>Female</label>
-         </div>
-         <div class='two'>
-          <input type='radio' class='radio-btn' id='male' ng-required='!user.gender' ng-model='user.gender' value='male' />
-          <label for='male'>Male</label>
-         </div>
-       </div>
-       <input type='submit' class='btn btn-default' ng-click='findGender()' ng-disabled='!user.weight || !user.gender' value='save' />
-     </form>
+
+
+        <div class="form-control male-body-fat" ng-show='user_male'>
+          <form class='body-gauge' ng-submit='showMealsForm()'>
+            <div class='category'>
+              <h2>What is your body fat percentage?</h2>
+              <div class="one radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='10.13' id='10-13'>
+                <label for='10-13'>10-13<span class='percent-sign'>%</span></label>
+              </div>
+              <div class="two radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='14.19' id='14-19'>
+                <label for='14-19'>14-19<span class='percent-sign'>%</span></label>
+              </div>
+              <div class="three radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='20.27' id='20-27'>
+                <label for="20-27">20-27<span class='percent-sign'>%</span></label>
+              </div>
+              <div class="four radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='28.30' id='28-30'>
+                <label for="28-30">28-30<span class='percent-sign'>%</span></label>
+              </div>
+              <div class="submit-wrapper">
+                <input type="submit" class='submit-btn' value='submit'>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="form-control female-body-fat" ng-show='user_female'>
+          <form class='body-gauge' ng-submit='showMealsForm()'>
+            <div class='category'>
+              <h2>What is your body fat percentage?</h2>
+              <div class="one radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='14.17' id='14-17'>
+                <label for='14-17'>14-17<span class='percent-sign'>%</span></label>
+              </div>
+              <div class="two radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='18.27' id='18-27'>
+                <label for='18-27'>18-27<span class='percent-sign'>%</span></label>
+              </div>
+              <div class="three radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='28.37' id='28-37'>
+                <label for="28-37">28-37<span class='percent-sign'>%</span></label>
+              </div>
+              <div class="four radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='38.48' id='38-48'>
+                <label for="38-48">38-48<span class='percent-sign'>%</span></label>
+              </div>
+              <div class="submit-wrapper">
+                <input type="submit" class='submit-btn' value='submit'>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class='meal-info' ng-if='show_meals'>
+          <form class='meal-form' ng-submit='addFood(meal)'>
+            <div class="number-input-wrapper">
+              <span class="number-input" ng-class='{"input--filled": meal.one}'>
+        				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.one' ng-model='meal.one' numbers-only/>
+        				<label class="input__label input__label" for="input-22">
+        					<span class="input__label-content input__label-content">First Meal</span>
+        				</label>
+          	  </span>
+            </div>
+            <div class="number-input-wrapper">
+              <span class="number-input" ng-class='{"input--filled": meal.two}'>
+        				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.two' ng-model='meal.two' numbers-only/>
+        				<label class="input__label input__label" for="input-22">
+        					<span class="input__label-content input__label-content">Second Meal</span>
+        				</label>
+          	  </span>
+            </div>
+            <div class="number-input-wrapper">
+              <span class="number-input" ng-class='{"input--filled": meal.snack1}'>
+        				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.snack1' ng-model='meal.snack1' numbers-only/>
+        				<label class="input__label input__label" for="input-22">
+        					<span class="input__label-content input__label-content">First Snack</span>
+        				</label>
+          	  </span>
+            </div>
+            <div class="number-input-wrapper">
+              <span class="number-input" ng-class='{"input--filled": meal.three}'>
+        				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.three' ng-model='meal.three' numbers-only/>
+        				<label class="input__label input__label" for="input-22">
+        					<span class="input__label-content input__label-content">Third Meal</span>
+        				</label>
+          	  </span>
+            </div>
+            <div class="number-input-wrapper">
+              <span class="number-input" ng-class='{"input--filled": meal.snack2}'>
+        				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.snack2' ng-model='meal.snack2' numbers-only/>
+        				<label class="input__label input__label" for="input-22">
+        					<span class="input__label-content input__label-content">Second Snack</span>
+        				</label>
+          	  </span>
+            </div>
+            <div class="number-input-wrapper">
+              <span class="number-input" ng-class='{"input--filled": meal.four}'>
+        				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.four' ng-model='meal.four' numbers-only min="0"/>
+        				<label class="input__label input__label" for="input-22">
+        					<span class="input__label-content input__label-content">Fourth Meal</span>
+        				</label>
+          	  </span>
+            </div>
+            <input type="submit" class='btn btn-default' value='save meals'>
+          </form>
+        </div>
+
+        <div class="activity-level-male" ng-if='show_activity_male'>
+          <form class='activity-gauge' ng-submit='calculateBMRMale()'>
+            <div class='category'>
+              <h2>What is your Activity Level</h2>
+              <div class="one radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='lazy' id='lazy'>
+                <label for='lazy'>Lazy</label>
+              </div>
+              <div class="two radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='light' id='light'>
+                <label for='light'>Light</label>
+              </div>
+              <div class="three radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='average' id='average'>
+                <label for="average">Average</label>
+              </div>
+              <div class="four radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='heavy' id='heavy'>
+                <label for="heavy">Heavy</label>
+              </div>
+              <div class="five radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='Hard' id='Hard'>
+                <label for="Hard">Hard</label>
+              </div>
+              <div class="submit-wrapper">
+                <input type="submit" class='submit-btn' value='submit'>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="activity-level-female" ng-if='show_activity_female'>
+          <form class='activity-gauge' ng-submit='calculateBMRFemale()'>
+            <div class='category'>
+              <h2>What is your Activity Level</h2>
+              <div class="one radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='lazy' id='lazy'>
+                <label for='lazy'>Lazy</label>
+              </div>
+              <div class="two radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='light' id='light'>
+                <label for='light'>Light</label>
+              </div>
+              <div class="three radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='average' id='average'>
+                <label for="average">Average</label>
+              </div>
+              <div class="four radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='heavy' id='heavy'>
+                <label for="heavy">Heavy</label>
+              </div>
+              <div class="five radio-btn-wrapper">
+                <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='Hard' id='Hard'>
+                <label for="Hard">Hard</label>
+              </div>
+              <div class="submit-wrapper">
+                <input type="submit" class='submit-btn' value='submit'>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      <div class="results-container" ng-if='final'>
+        <div class="results">
+          <button class='btn btn-default' ng-click='muscleGain()'>Calculate Muscle Gain</button>
+          <button class='btn btn-default' ng-click='weightLoss()'>Calculate Fat Loss</button>
+        </div>
+      </div>
+
+
+      <div ng-if='results'>
+        <div class="" ng-if="!muscleGain()">You need to eat at least {{ totalCalories }} more calories in order to gain 1lb of muscle this week!</div>
+        <div class="" ng-if="muscleGain()">You are on track to gain muscle this week! </div>
+      </div>
+
+
+      <div ng-if='results2'>
+        <div ng-if='!weightLoss()'> you need to eat at least {{ totalCalories }} less calories in order to lose 1lb of fat this week </div>
+        <div ng-if='weightLoss()'> you are on track to lose 1lb of fat this week! </div>
+      </div>
     </div>
 
-
-    <div class="form-control male-body-fat" ng-show='user_male'>
-      <form class='body-gauge' ng-submit='showMealsForm()'>
-        <div class='category'>
-          <h2>What is your body fat percentage?</h2>
-          <div class="one radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='10.13' id='10-13'>
-            <label for='10-13'>10-13%</label>
-          </div>
-          <div class="two radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='14.19' id='14-19'>
-            <label for='14-19'>14-19%</label>
-          </div>
-          <div class="three radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='20.27' id='20-27'>
-            <label for="20-27">20-27%</label>
-          </div>
-          <div class="four radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='28.30' id='28-30'>
-            <label for="28-30">28-30%</label>
-          </div>
-          <div class="submit-wrapper">
-            <input type="submit" class='submit-btn' value='submit'>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class="form-control female-body-fat" ng-show='user_female'>
-      <form class='body-gauge' ng-submit='showMealsForm()'>
-        <div class='category'>
-          <h2>What is your body fat percentage?</h2>
-          <div class="one radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='14.17' id='14-17'>
-            <label for='14-17'>14-17%</label>
-          </div>
-          <div class="two radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='18.27' id='18-27'>
-            <label for='18-27'>18-27%</label>
-          </div>
-          <div class="three radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='28.37' id='28-37'>
-            <label for="28-37">28-37%</label>
-          </div>
-          <div class="four radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.bodyFat' value='38.48' id='38-48'>
-            <label for="38-48">38-48%</label>
-          </div>
-          <div class="submit-wrapper">
-            <input type="submit" class='submit-btn' value='submit'>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class='meal-info' ng-if='show_meals'>
-      <form class='meal-form' ng-submit='addFood(meal)'>
-        <div class="number-input-wrapper">
-          <span class="number-input" ng-class='{"input--filled": meal.one}'>
-    				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.one' ng-model='meal.one' numbers-only/>
-    				<label class="input__label input__label" for="input-22">
-    					<span class="input__label-content input__label-content">First Meal</span>
-    				</label>
-      	  </span>
-        </div>
-        <div class="number-input-wrapper">
-          <span class="number-input" ng-class='{"input--filled": meal.two}'>
-    				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.two' ng-model='meal.two' numbers-only/>
-    				<label class="input__label input__label" for="input-22">
-    					<span class="input__label-content input__label-content">Second Meal</span>
-    				</label>
-      	  </span>
-        </div>
-        <div class="number-input-wrapper">
-          <span class="number-input" ng-class='{"input--filled": meal.snack1}'>
-    				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.snack1' ng-model='meal.snack1' numbers-only/>
-    				<label class="input__label input__label" for="input-22">
-    					<span class="input__label-content input__label-content">First Snack</span>
-    				</label>
-      	  </span>
-        </div>
-        <div class="number-input-wrapper">
-          <span class="number-input" ng-class='{"input--filled": meal.three}'>
-    				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.three' ng-model='meal.three' numbers-only/>
-    				<label class="input__label input__label" for="input-22">
-    					<span class="input__label-content input__label-content">Third Meal</span>
-    				</label>
-      	  </span>
-        </div>
-        <div class="number-input-wrapper">
-          <span class="number-input" ng-class='{"input--filled": meal.snack2}'>
-    				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.snack2' ng-model='meal.snack2' numbers-only/>
-    				<label class="input__label input__label" for="input-22">
-    					<span class="input__label-content input__label-content">Second Snack</span>
-    				</label>
-      	  </span>
-        </div>
-        <div class="number-input-wrapper">
-          <span class="number-input" ng-class='{"input--filled": meal.four}'>
-    				<input class="input__field input__field" type="number" id="input-22" ng-required='!meal.four' ng-model='meal.four' numbers-only min="0"/>
-    				<label class="input__label input__label" for="input-22">
-    					<span class="input__label-content input__label-content">Fourth Meal</span>
-    				</label>
-      	  </span>
-        </div>
-        <input type="submit" class='btn btn-default' value='save meals'>
-      </form>
-    </div>
-
-    <div class="activity-level-male" ng-if='show_activity_male'>
-      <form class='activity-gauge' ng-submit='calculateBMRMale()'>
-        <div class='category'>
-          <h2>What is your Activity Level</h2>
-          <div class="one radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='lazy' id='lazy'>
-            <label for='lazy'>Lazy</label>
-          </div>
-          <div class="two radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='light' id='light'>
-            <label for='light'>Light</label>
-          </div>
-          <div class="three radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='average' id='average'>
-            <label for="average">Average</label>
-          </div>
-          <div class="four radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='heavy' id='heavy'>
-            <label for="heavy">Heavy</label>
-          </div>
-          <div class="five radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='Hard' id='Hard'>
-            <label for="Hard">Hard</label>
-          </div>
-          <div class="submit-wrapper">
-            <input type="submit" class='submit-btn' value='submit'>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class="activity-level-female" ng-if='show_activity_female'>
-      <form class='activity-gauge' ng-submit='calculateBMRFemale()'>
-        <div class='category'>
-          <h2>What is your Activity Level</h2>
-          <div class="one radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='lazy' id='lazy'>
-            <label for='lazy'>Lazy</label>
-          </div>
-          <div class="two radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='light' id='light'>
-            <label for='light'>Light</label>
-          </div>
-          <div class="three radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='average' id='average'>
-            <label for="average">Average</label>
-          </div>
-          <div class="four radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='heavy' id='heavy'>
-            <label for="heavy">Heavy</label>
-          </div>
-          <div class="five radio-btn-wrapper">
-            <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='Hard' id='Hard'>
-            <label for="Hard">Hard</label>
-          </div>
-          <div class="submit-wrapper">
-            <input type="submit" class='submit-btn' value='submit'>
-          </div>
-        </div>
-      </form>
-    </div>
-
-  <div class="results-container" ng-if='final'>
-    <div class="results">
-      <button class='btn btn-default' ng-click='muscleGain()'>Calculate Muscle Gain</button>
-      <button class='btn btn-default' ng-click='weightLoss()'>Calculate Fat Loss</button>
-    </div>
-  </div>
-
-
-  <div ng-if='results'>
-    <div class="" ng-if="!muscleGain()">You need to eat at least {{ totalCalories }} more calories in order to gain 1lb of muscle this week!</div>
-    <div class="" ng-if="muscleGain()">You are on track to gain muscle this week! </div>
-  </div>
-
-
-  <div ng-if='results2'>
-    <div ng-if='!weightLoss()'> you need to eat at least {{ totalCalories }} less calories in order to lose 1lb of fat this week </div>
-    <div ng-if='weightLoss()'> you are on track to lose 1lb of fat this week! </div>
-  </div>
 </body>
 </html>
