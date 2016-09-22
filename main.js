@@ -28,8 +28,9 @@ app.directive('input', [function() {
 app.controller('mainCtrl', function($scope) {
     $scope.user = {};
     $scope.meal = {};
+    $scope.start = true;
     $scope.showCalories = false;
-    $scope.noUser = true;
+    $scope.noUser = false;
     $scope.user_male= null;
     $scope.user_female = null;
     $scope.show_meals = null;
@@ -75,8 +76,24 @@ app.controller('mainCtrl', function($scope) {
     //
     // };
 
+    $scope.confirmUser = function() {
+      $scope.body = angular.element(document.querySelector('body'));
+      $scope.start = false;
+      $scope.body.removeClass('background-img');
+      $scope.noUser = true;
+    };
 
-
+    $scope.findGender = function() {
+      if ($scope.user.gender === 'male') {
+        $scope.user_male = true;
+        $scope.noUser = false;
+        // $scope.show_meals = true;
+      } else if ($scope.user.gender === 'female') {
+        $scope.user_female = true;
+        $scope.noUser = false;
+        // $scope.show_meals = true;
+      }
+    };
     //user basic info required for calculations
     $scope.update = function(user) {
       $scope.user = angular.copy(user);
@@ -103,17 +120,6 @@ app.controller('mainCtrl', function($scope) {
       }
     };
 
-    $scope.findGender = function() {
-      if ($scope.user.gender === 'male') {
-        $scope.user_male = true;
-        $scope.noUser = false;
-        // $scope.show_meals = true;
-      } else if ($scope.user.gender === 'female') {
-        $scope.user_female = true;
-        $scope.noUser = false;
-        // $scope.show_meals = true;
-      }
-    };
     $scope.calculateBMRMale = function() {
       console.log('bodyfat', $scope.maleBodyFat[$scope.user.bodyFat]);
       console.log('type of', typeof $scope.user.weight);

@@ -40,6 +40,16 @@ header {
   font-family: 'PT Sans', sans-serif;
 }
 
+
+/*Entrance Page CSS*/
+.background-img {
+  background-image: url('./images/apple-watch.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*background-position: 50% 50%;*/
+  height: 100%;
+}
+
 /*Input css*/
 
 input[type='number'] {

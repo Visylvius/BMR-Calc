@@ -5,17 +5,18 @@
     <title>Macro Log</title>
     <script src="bower_components/angular/angular.js"></script>
     <script src='bower_components/underscore/underscore-min.js'></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js'></script>
     <script src="main.js"></script>
     <script src='node_modules/ng-numbers-only/dist/ng-numbers-only.js'></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:700" rel="stylesheet">
   </head>
-<body>
-    <header>
-      <h1>BMR Calculator</h1>
-    </header>
+<body class='background-img'>
+    <div ng-if=start>
+      <h1 class='start-page'>BMR Calculator</h1>
+      <button class='submit-btn start-page' ng-click='confirmUser()'>Start</button>
+    </div>
     <div class='wrapper'>
         <div class="form-group user-info" ng-if=noUser>
          <form name="userForm" class="form-horizontal">
@@ -26,7 +27,7 @@
             <div class="number-input-wrapper">
               <span class="number-input" ng-class='{"input--filled": user.weight}'>
         				<input class="input__field input__field" type="number" id="input-1" required ng-model='user.weight' numbers-only precision="2" step="1" min="0"/>
-        				<label class="input__label_main_page input__label" for="input-1">
+        				<label class="input__label_green input__label" for="input-1">
         					<span class="input__label-content input__label-content">Enter your weight here</span>
         				</label>
           	  </span>
