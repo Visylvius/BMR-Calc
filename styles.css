@@ -170,53 +170,53 @@ input[type=radio] {
 }
 
 
-.one input[type="radio"] + label {
+.pink input[type="radio"] + label {
   border-bottom: 8px solid #ff8fda;
 }
 
-.two input[type="radio"] + label {
+.blue input[type="radio"] + label {
   border-bottom: 8px solid #6ac3fb;
 }
 
-.three input[type="radio"] + label {
+.yellow input[type="radio"] + label {
   border-bottom: 8px solid #fde984;
 }
 
-.four input[type="radio"] + label {
+.green input[type="radio"] + label {
   border-bottom: 8px solid #93f8cd
 }
 
-.five input[type="radio"] + label {
+.purple input[type="radio"] + label {
   border-bottom: 8px solid #c3a6fd;
 }
 
 
-.one input[type="radio"]:checked + label,
-.one input[type="radio"] + label:hover {
+.pink input[type="radio"]:checked + label,
+.pink input[type="radio"] + label:hover {
   background: #ff8fda;
   border-bottom: transparent;
 }
 
-.two input[type="radio"]:checked + label,
-.two input[type="radio"] + label:hover {
+.blue input[type="radio"]:checked + label,
+.blue input[type="radio"] + label:hover {
   background: #6ac3fb;
   border-bottom: transparent;
 }
 
-.three input[type="radio"]:checked + label,
-.three input[type="radio"] + label:hover {
+.yellow input[type="radio"]:checked + label,
+.yellow input[type="radio"] + label:hover {
   background: #fde984;
   border-bottom: transparent;
 }
 
-.four input[type="radio"]:checked + label,
-.four input[type="radio"] + label:hover {
+.green input[type="radio"]:checked + label,
+.green input[type="radio"] + label:hover {
   background: #93f8cd;
   border-bottom: transparent;
 }
 
-.five input[type="radio"]:checked + label,
-.five input[type="radio"] + label:hover {
+.purple input[type="radio"]:checked + label,
+.purple input[type="radio"] + label:hover {
   background: #c3a6fd;
   border-bottom: transparent;
 }
@@ -292,6 +292,30 @@ input[type=radio] {
 	cursor: text;
 }
 
+.input__label_pink {
+  background: #FF8FDA;
+}
+
+.input__label_blue {
+  background: #6AC3FB;
+}
+
+.input__label_yellow {
+  background: #FDE984;
+}
+
+.input__label_green {
+  background: #93F8CD;
+}
+
+.input__label_purple {
+  background: #C3A6FD;
+}
+
+.input__label_red {
+  background: #f77171;
+}
+
 .input__label::before {
 	content: '';
 	position: absolute;
@@ -333,6 +357,7 @@ input[type=radio] {
 	-webkit-transform: translate3d(0, -3.5em, 0);
 	transform: translate3d(0, -3.5em, 0);
 }
+
 
 .ng-not-empty + input__label > span {
   -webkit-transform: scale3d(0.99, 0.95, 1);
