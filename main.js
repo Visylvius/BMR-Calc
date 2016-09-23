@@ -45,6 +45,7 @@ app.controller('mainCtrl', function($scope) {
     $scope.number = '';
     $scope.numbertwo = '';
     $scope.numberthree = '';
+    $scope.started = false;
 
     $scope.bmrActivityCalc = {
       lazy: 1.30,
@@ -77,20 +78,34 @@ app.controller('mainCtrl', function($scope) {
     // };
 
     $scope.confirmUser = function() {
-      $scope.body = angular.element(document.querySelector('body'));
+      // $scope.body = angular.element(document.querySelector('body'));
       $scope.start = false;
-      $scope.body.removeClass('background-img');
+      // $scope.body.removeClass('background-img');
       $scope.noUser = true;
+      $scope.started = true;
+    };
+
+    $scope.findUser = function(user) {
+      if (user === 'male') {
+        console.log('male has been selected');
+        return 'maleButton';
+      } else if (user === 'female') {
+        console.log('female has been selected');
+        return 'femaleButton';
+      }
     };
 
     $scope.findGender = function() {
+      // console.log($scope.)
       if ($scope.user.gender === 'male') {
         $scope.user_male = true;
         $scope.noUser = false;
+        $scope.started = true;
         // $scope.show_meals = true;
       } else if ($scope.user.gender === 'female') {
         $scope.user_female = true;
         $scope.noUser = false;
+        $scope.started = true;
         // $scope.show_meals = true;
       }
     };

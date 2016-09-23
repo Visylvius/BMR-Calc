@@ -13,12 +13,19 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:700" rel="stylesheet">
   </head>
 <body class='background-img'>
-    <div ng-if=start>
-      <h1 class='start-page'>BMR Calculator</h1>
-      <button class='submit-btn start-page' ng-click='confirmUser()'>Start</button>
+    <div class='header' ng-if=start>
+      <div class="wrapper">
+        <div class="form-container">
+          <h1 class='start-page'>BMR Calculator</h1>
+          <button class='submit-btn start-page' ng-click='confirmUser()'>Start</button>
+        </div>
+      </div>
+
     </div>
-    <div class='wrapper'>
-        <div class="form-group user-info" ng-if=noUser>
+    <div class='wrapper form-wrapper' ng-show='started'>
+      <div class='form-container'>
+        <h1>BMR Calculator</h1>
+        <div class="form-group user-info" ng-if='noUser'>
          <form name="userForm" class="form-horizontal">
            <div class="category">
             <p>
@@ -42,11 +49,11 @@
               <label for='female'>Female</label>
              </div>
              <div class='blue horizontal'>
-              <input type='radio' class='radio-btn' id='male' ng-required='!user.gender' ng-model='user.gender' value='male' />
+              <input type='radio' class='radio-btn' id='male' ng-required='!user.gender' ng-model='user.gender' value='male' ng-click='findUser()' />
               <label for='male'>Male</label>
              </div>
            </div>
-           <input type='submit' class='submit-btn' ng-click='findGender()' ng-disabled='!user.weight || !user.gender' value='save' />
+           <input type='submit' class='submit-btn' ng-click='findGender()' ng-class='findUser(user.gender)' ng-disabled='!user.weight || !user.gender' value='save' />
          </form>
         </div>
 
@@ -110,7 +117,7 @@
             <div class="number-input-wrapper">
               <span class="number-input" ng-class='{"input--filled": meal.one}'>
         				<input class="input__field input__field" type="number" id="input-2" ng-required='!meal.one' ng-model='meal.one' numbers-only/>
-        				<label class="input__label_pink input__label" for="input-2">
+        				<label class="input__label_yellow input__label" for="input-2">
         					<span class="input__label-content input__label-content">First Meal</span>
         				</label>
           	  </span>
@@ -118,7 +125,7 @@
             <div class="number-input-wrapper">
               <span class="number-input" ng-class='{"input--filled": meal.two}'>
         				<input class="input__field input__field" type="number" id="input-3" ng-required='!meal.two' ng-model='meal.two' numbers-only/>
-        				<label class="input__label_blue input__label" for="input-3">
+        				<label class="input__label_orange input__label" for="input-3">
         					<span class="input__label-content input__label-content">Second Meal</span>
         				</label>
           	  </span>
@@ -126,7 +133,7 @@
             <div class="number-input-wrapper">
               <span class="number-input" ng-class='{"input--filled": meal.snack1}'>
         				<input class="input__field input__field" type="number" id="input-4" ng-required='!meal.snack1' ng-model='meal.snack1' numbers-only/>
-        				<label class="input__label_yellow input__label" for="input-4">
+        				<label class="input__label_pink input__label" for="input-4">
         					<span class="input__label-content input__label-content">First Snack</span>
         				</label>
           	  </span>
@@ -142,7 +149,7 @@
             <div class="number-input-wrapper">
               <span class="number-input" ng-class='{"input--filled": meal.snack2}'>
         				<input class="input__field input__field" type="number" id="input-6" ng-required='!meal.snack2' ng-model='meal.snack2' numbers-only/>
-        				<label class="input__label_purple input__label" for="input-6">
+        				<label class="input__label_blue input__label" for="input-6">
         					<span class="input__label-content input__label-content">Second Snack</span>
         				</label>
           	  </span>
@@ -150,7 +157,7 @@
             <div class="number-input-wrapper">
               <span class="number-input" ng-class='{"input--filled": meal.four}'>
         				<input class="input__field input__field" type="number" id="input-7" ng-required='!meal.four' ng-model='meal.four' numbers-only min="0"/>
-        				<label class="input__label_red input__label" for="input-7">
+        				<label class="input__label_purple input__label" for="input-7">
         					<span class="input__label-content input__label-content">Fourth Meal</span>
         				</label>
           	  </span>
@@ -162,7 +169,7 @@
         <div class="activity-level-male" ng-if='show_activity_male'>
           <form class='activity-gauge' ng-submit='calculateBMRMale()'>
             <div class='category'>
-              <h2>What is your Activity Level</h2>
+              <h2>What is your Activity Level?</h2>
               <div class="pink radio-btn-wrapper">
                 <input type="radio" class='form-control' ng-required='!user.bodyFat' ng-model='user.activityLevel' value='lazy' id='lazy'>
                 <label for='lazy'>Lazy</label>
@@ -239,6 +246,7 @@
         <div ng-if='!weightLoss()'> you need to eat at least {{ totalCalories }} less calories in order to lose 1lb of fat this week </div>
         <div ng-if='weightLoss()'> you are on track to lose 1lb of fat this week! </div>
       </div>
+     </div>
     </div>
 
 </body>

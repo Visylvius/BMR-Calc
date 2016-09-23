@@ -8,6 +8,8 @@ html {
 html, body {
   padding: 0;
   margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -18,6 +20,21 @@ body {
 
 .wrapper {
   padding: 0 20%;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  height: 100%;
+}
+
+.form-container {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 20px #333;
 }
 
 header {
@@ -40,15 +57,32 @@ header {
   font-family: 'PT Sans', sans-serif;
 }
 
+h1.start-page {
+  color: white;
+  text-shadow: 0 0 10px black;
+}
+
 
 /*Entrance Page CSS*/
 .background-img {
-  background-image: url('./images/apple-watch.jpeg');
+  background-image: url('https://hd.unsplash.com/photo-1415394171664-b29caa4dca77');
   background-size: cover;
   background-repeat: no-repeat;
   /*background-position: 50% 50%;*/
   height: 100%;
+  /*background-color: rgba(255, 0, 0, 0.5);*/
 }
+
+.form-wrapper {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.form-wrapper h1 {
+  color: white;
+  text-shadow: 0 0 10px black;
+  font-size: 48px;
+}
+
 
 /*Input css*/
 
@@ -141,11 +175,11 @@ label {
 }
 
 
-.submit-btn:hover,
+/*.submit-btn:hover,
 .submit-btn:active {
   color: #000;
   background: #0e83cd;
-}
+}*/
 
 .submit-btn:after {
   content: '';
@@ -164,6 +198,15 @@ label {
 .submit-btn:hover:after,
 .submit-btn:active:after {
   width: 100%;
+}
+
+.maleButton {
+  background: #6AC3FB;
+  /*transition: 0.3s;*/
+}
+
+.femaleButton {
+  background: #FF8FDA;
 }
 
 /* Ng-class */
@@ -322,8 +365,8 @@ input[type=radio] {
   background: #C3A6FD;
 }
 
-.input__label_red {
-  background: #f77171;
+.input__label_orange {
+  background: #ffca73
 }
 
 .input__label::before {
