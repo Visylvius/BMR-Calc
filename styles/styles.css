@@ -200,16 +200,40 @@ label {
   width: 100%;
 }
 
+
+/* Ng-class */
+
 .maleButton {
   background: #6AC3FB;
+  border: 3px solid #0e83cd;
   /*transition: 0.3s;*/
 }
 
 .femaleButton {
-  background: #FF8FDA;
+  background: #FFC2EB;
+  border: 3px solid #FF8FDA;
 }
 
-/* Ng-class */
+.pinkButton {
+  background: #FFC2EB;
+  border: 3px solid #FF8FDA;
+}
+
+.blueButton {
+  background: #9CD7FC;
+  border: 3px solid #6AC3FB;
+}
+
+.yellowButton {
+  background: #FEF2B6;
+  border: 3px solid #FDE984;
+}
+
+.greenButton {
+  background: #C3FBE3;
+  border: 3px solid #93F8CD;
+}
+
 
 .submit-one {
   color: white;
@@ -273,6 +297,7 @@ input[type=radio] {
   background: #c3a6fd;
   border-bottom: transparent;
 }
+
 
 /* Akira */
 

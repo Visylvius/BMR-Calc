@@ -95,6 +95,18 @@ app.controller('mainCtrl', function($scope) {
       }
     };
 
+    $scope.bodyFatColor = function(percentage) {
+      if (percentage === '10.13') {
+        return 'pinkButton';
+      } else if (percentage === '14.19') {
+        return 'blueButton';
+      } else if (percentage === '20.27') {
+        return 'yellowButton';
+      } else if (percentage === '28.30') {
+        return 'greenButton';
+      }
+    };
+
     $scope.findGender = function() {
       // console.log($scope.)
       if ($scope.user.gender === 'male') {
