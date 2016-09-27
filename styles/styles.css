@@ -234,6 +234,11 @@ label {
   border: 3px solid #93F8CD;
 }
 
+.purpleButton {
+  background: #E5D8FE;
+  border: 3px solid #C3A6FD;
+}
+
 
 .submit-one {
   color: white;

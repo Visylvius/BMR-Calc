@@ -95,7 +95,7 @@ app.controller('mainCtrl', function($scope) {
       }
     };
 
-    $scope.bodyFatColor = function(percentage) {
+    $scope.maleBodyFatColor = function(percentage) {
       if (percentage === '10.13') {
         return 'pinkButton';
       } else if (percentage === '14.19') {
@@ -104,6 +104,32 @@ app.controller('mainCtrl', function($scope) {
         return 'yellowButton';
       } else if (percentage === '28.30') {
         return 'greenButton';
+      }
+    };
+
+    $scope.femaleBodyFatColor = function(percentage) {
+      if (percentage === '14.17') {
+        return 'pinkButton';
+      } else if (percentage === '18.27') {
+        return 'blueButton';
+      } else if (percentage === '28.37') {
+        return 'yellowButton';
+      } else if (percentage === '38.48') {
+        return 'greenButton';
+      }
+    };
+
+    $scope.activityLevel = function(string) {
+      if (string === 'lazy') {
+        return 'pinkButton';
+      } else if (string === 'light') {
+        return 'blueButton';
+      } else if (string === 'average') {
+        return 'yellowButton';
+      } else if (string === 'heavy') {
+        return 'greenButton';
+      } else if (string === 'hard') {
+        return 'purpleButton';
       }
     };
 
