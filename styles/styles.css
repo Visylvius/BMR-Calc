@@ -65,7 +65,7 @@ h1.start-page {
 
 /*Entrance Page CSS*/
 .background-img {
-  background-image: url('https://hd.unsplash.com/photo-1415394171664-b29caa4dca77');
+  background-image: url('./images/running.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   /*background-position: 50% 50%;*/
